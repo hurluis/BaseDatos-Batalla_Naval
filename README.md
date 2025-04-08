@@ -11,8 +11,8 @@ Este proyecto consiste en la implementación de un juego de batalla naval en Pyt
     pip install kivy[base]
 
 ## Instrucciones de Instalación
-1. Copie el enlace HTTPS del github: "https://github.com/WalterBedoyaPerez/ProyectoBatallaNavalDB.git".
-2. Abre una terminal (preferiblemente git bash) y clona el repositorio usando: `https://github.com/WalterBedoyaPerez/ProyectoBatallaNavalDB.git` .
+1. Copie el enlace HTTPS del github: "https://github.com/hurluis/BaseDatos-Batalla_Naval".
+2. Abre una terminal (preferiblemente git bash) y clona el repositorio usando: `https://github.com/hurluis/BaseDatos-Batalla_Naval` .
 3. Cambia/parate al repositorio usando: `cd ProyectoBatallaNavalDB`.
 4. Cambia/parate a la carpeta src usando: `cd src`.
 
