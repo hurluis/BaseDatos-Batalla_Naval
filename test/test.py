@@ -4,20 +4,10 @@ import unittest
 import sys
 sys.path.append("src")
 #Importar archivo de lógicxa para hacer las pruebas
-import src.LogicTTY.logica as tablero
-from src.LogicTTY.logica import *
-#Se crea la clase para hacer las pruebas con la biblioteca unittest
-
-# Todas las prueba sunitarias importan la biblioteca unittest
-import unittest
-#Lo importamos para incluir la ruta de busqueda de python
-import sys
-sys.path.append("src")
-#Importar archivo de lógicxa para hacer las pruebas
 
 # Importa la clase Tablero desde LogicTTY.logica
-from src.LogicTTY.logica import Tablero, ErrorCoordenadasFueraRango, ErrorCoordenadasNegativas,ErrorCoordenadasString,ErrorCoordenadasVacias
-from src.consoleTTY.consola import Ingresar_cantidad, preguntar_seguir_jugando
+from Model.logica import Tablero, ErrorCoordenadasFueraRango, ErrorCoordenadasNegativas,ErrorCoordenadasString,ErrorCoordenadasVacias
+
 
 
 class TestTablero(unittest.TestCase):
@@ -68,7 +58,9 @@ class TestTablero(unittest.TestCase):
 
         resultado=tablero.buscar_barco()
         
+        
         self.assertEqual(expected,resultado)
+        
 
 # Prueba para verificar si no hay barcos
     def test_no_hay_barcos_1(self):
@@ -77,7 +69,8 @@ class TestTablero(unittest.TestCase):
         filas=10
         columnas=10
         tablero = Tablero(filas,columnas)
-        tablero.colocar_barcos(0)
+        tablero.colocar_barcos(1)
+        tablero.barcos={}
 
         # resultado esperado
         expected=True
@@ -99,7 +92,7 @@ class TestTablero(unittest.TestCase):
             tablero.colocar_barcos("s")
 
 # Prueba para verificar error
-    def test_error_entrada_vacia_1(self):
+    def test_error_entrada_negativa_1(self):
 
         # Configuración del tablero
         filas=10
@@ -130,14 +123,14 @@ class TestTablero(unittest.TestCase):
 
 
         with self.assertRaises(ErrorCoordenadasFueraRango):
-            tablero.colocar_barcos(11)
+            tablero.colocar_barcos(888)
 
 # Prueba para verificar si no gano
     def test_no_ganar_1(self):
 
         # Configuración del tablero
-        filas=5
-        columnas=5
+        filas=10
+        columnas=10
         tablero = Tablero(filas,columnas)
         tablero.colocar_barcos(3)
 
@@ -153,10 +146,11 @@ class TestTablero(unittest.TestCase):
     def test_ganar_1(self):
 
         # Configuración del tablero
-        filas=5
-        columnas=5
+        filas=10
+        columnas=10
         tablero = Tablero(filas,columnas)
-        tablero.colocar_barcos(0)
+        tablero.colocar_barcos(2)
+        tablero.barcos={}
 
         # resultado esperado
         expected=True
@@ -338,7 +332,7 @@ class TestTablero(unittest.TestCase):
                          ["O","O","O","O","O","O","O","O","O","B"]]
 
         with self.assertRaises(ErrorCoordenadasString):
-            tablero.disparar()
+            tablero.disparar("s","d")
 
 # Prueba para verificar si el disparo golpea agua de nuevo
     def test_disparar_mismo_lugar_agua(self):
@@ -392,3 +386,4 @@ class TestTablero(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
